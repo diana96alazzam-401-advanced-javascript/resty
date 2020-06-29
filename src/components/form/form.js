@@ -13,7 +13,7 @@ class Form extends React.Component {
       <main className="formArea">
         <form onSubmit={this.submitHandler}>
 
-            <label htmlFor="url">URL <input type="text" name="url" id="url"  /></label><br/>
+            <label htmlFor="url">URL <input type="text" name="url" id="url"/></label><br/>
             <label htmlFor="GET">GET <input type="radio" name="method" id="GET" value="GET" /></label> <span/>
             <label htmlFor="POST">POST <input type="radio" name="method" id="POST" value="POST"/></label><span/>
             <label htmlFor="PUT">PUT <input type="radio" name="method" id="PUT" value="PUT"/></label><span/>
@@ -21,7 +21,7 @@ class Form extends React.Component {
   
             <input type="submit" value="GO!" />
         </form>
-        <p>{this.state.method} {this.state.url}</p>
+        <p>{this.state.method} - {this.state.url}</p>
       </main>
           )
   }
@@ -31,6 +31,9 @@ class Form extends React.Component {
     const method = e.target.method.value;
     const url = e.target.url.value;
     this.setState({method, url});
+    e.target.method.value = '';
+    e.target.url.value = '';
+    // e.target.reset();
   }
   
 }
