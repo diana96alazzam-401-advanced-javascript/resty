@@ -4,6 +4,11 @@ import renderer from 'react-test-renderer';
 import Form from '../../../components/form/form';
 
 describe('<Form/>', () => {
+  it('Do the method selectors/checkboxes obey the styling rules', () => {
+    const rendered = renderer.create(<Form />).toJSON();
+    expect(rendered).toMatchSnapshot();
+  });
+  
   it('is alive at application start', () => {
     const form = shallow(<Form />);
     expect(form.find('.results .method').exists()).toBeTruthy();
@@ -51,11 +56,6 @@ describe('<Form/>', () => {
     expect(textInput.text()).toStrictEqual('');
     expect(getButton.hasClass('')).toStrictEqual(true);
 
-  });
-
-  it('Do the method selectors/checkboxes obey the styling rules', () => {
-    const rendered = renderer.create(<Form />).toJSON();
-    expect(rendered).toMatchSnapshot();
   });
 
 })
