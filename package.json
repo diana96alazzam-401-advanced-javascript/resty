@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/index.js",
-  "homepage": "https:/diana96alazzam-401-advanced-javascript.github.io/resty/",
+  "homepage": "https:/diana96alazzam.github.io/resty/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
