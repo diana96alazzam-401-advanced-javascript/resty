@@ -1,163 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Form/> Do the method selectors/checkboxes obey the styling rules 1`] = `
-<main
-  className="formArea"
->
-  <form
-    onSubmit={[Function]}
-  >
-    <label
-      htmlFor="url"
-    >
-      URL 
-      <input
-        id="url"
-        name="url"
-        type="text"
-      />
-    </label>
-    <br />
-    <label
-      htmlFor="GET"
-    >
-      GET 
-      <input
-        id="GET"
-        name="method"
-        type="radio"
-        value="GET"
-      />
-    </label>
-     
-    <span />
-    <label
-      htmlFor="POST"
-    >
-      POST 
-      <input
-        id="POST"
-        name="method"
-        type="radio"
-        value="POST"
-      />
-    </label>
-    <span />
-    <label
-      htmlFor="PUT"
-    >
-      PUT 
-      <input
-        id="PUT"
-        name="method"
-        type="radio"
-        value="PUT"
-      />
-    </label>
-    <span />
-    <label
-      htmlFor="PUT"
-    >
-      DELETE 
-      <input
-        id="DELETE"
-        name="method"
-        type="radio"
-        value="DELETE"
-      />
-    </label>
-    <br />
-    <br />
-    <input
-      type="submit"
-      value="GO!"
-    />
-  </form>
-  <p>
-    Method
-     - 
-    URL
-  </p>
-</main>
-`;
-
 exports[`<Form/> properly display the users input in the output area on form submit 1`] = `
-<main
-  className="formArea"
->
+<main>
   <form
     onSubmit={[Function]}
   >
-    <label
-      htmlFor="url"
-    >
-      URL 
+    <label>
+      <span>
+        URL: 
+      </span>
       <input
-        id="url"
         name="url"
+        onChange={[Function]}
         type="text"
       />
+      <button
+        type="submit"
+      >
+        GO!
+      </button>
     </label>
-    <br />
     <label
-      htmlFor="GET"
+      className="methods"
     >
-      GET 
-      <input
-        id="GET"
-        name="method"
-        type="radio"
-        value="GET"
-      />
+      <span
+        className=""
+        id="get"
+        onClick={[Function]}
+      >
+        GET
+      </span>
+      <span
+        className=""
+        id="post"
+        onClick={[Function]}
+      >
+        POST
+      </span>
+      <span
+        className=""
+        id="put"
+        onClick={[Function]}
+      >
+        PUT
+      </span>
+      <span
+        className=""
+        id="delete"
+        onClick={[Function]}
+      >
+        DELETE
+      </span>
     </label>
-     
-    <span />
-    <label
-      htmlFor="POST"
-    >
-      POST 
-      <input
-        id="POST"
-        name="method"
-        type="radio"
-        value="POST"
-      />
-    </label>
-    <span />
-    <label
-      htmlFor="PUT"
-    >
-      PUT 
-      <input
-        id="PUT"
-        name="method"
-        type="radio"
-        value="PUT"
-      />
-    </label>
-    <span />
-    <label
-      htmlFor="PUT"
-    >
-      DELETE 
-      <input
-        id="DELETE"
-        name="method"
-        type="radio"
-        value="DELETE"
-      />
-    </label>
-    <br />
-    <br />
-    <input
-      type="submit"
-      value="GO!"
-    />
   </form>
-  <p>
-    Method
-     - 
-    URL
-  </p>
+  <section
+    className="results"
+  >
+    <span
+      className="method"
+    />
+    <span
+      className="url"
+    />
+  </section>
 </main>
 `;

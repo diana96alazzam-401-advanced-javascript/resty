@@ -12,16 +12,40 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  
+    label {
+      display: flex;
+      margin: 1rem 0;
+      font-size: 1.2em;
+      padding: 0.5vh;
+  
+      &.methods {
+        span {
+          cursor: pointer;
+          margin-right: 1rem;
+          padding: .25rem .5rem;
+          background-color: #0f6b3d;
+          border: none;
+          color: white;
+          padding: 1vh 2vh;
+          text-decoration: none;
+          font-size: 1em;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+
+          &:hover, &.active {
+            background: #210024;
+          }
+        }
+      }
+    }
+    input[type=text] {
+      border: none;
+      border-radius: 1vh;
+      padding: 2vh 5vh;
+    }
   }
-  label {
-    font-size: 1.2em;
-    padding: 0.5vh;
-  }
-  input[type=text] {
-    border: none;
-    border-radius: 1vh;
-    padding: 2vh 5vh;
-  }
+
+
   input[type=submit] {
     background-color: #0f6b3d;
     border: none;
@@ -33,13 +57,14 @@ main {
     font-size: 1.5em;
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
-  p {
+  .results {
     width: 80vw;
     height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;    background-color: #0f6b3d42;
+    flex-direction: column;    
+    background-color: #0f6b3d42;
     border-radius: 1vh;
   }
 }
