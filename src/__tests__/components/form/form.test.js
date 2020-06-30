@@ -8,7 +8,8 @@ describe('<Form/>', () => {
   //   const rendered = renderer.create(<Form />).toJSON();
   //   expect(rendered).toMatchSnapshot();
   // });
-  
+
+    
   it('is alive at application start', () => {
     const form = shallow(<Form />);
     expect(form.find('.results .method').exists()).toBeTruthy();
