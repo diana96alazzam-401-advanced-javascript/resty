@@ -10,7 +10,7 @@
 <!-- - [ci/cd](http://xyz.com) (GitHub Actions) 
 - [back-end server url](http://xyz.com) (when applicable)  -->
 - [front-end application-netlify](https://vibrant-jepsen-7190df.netlify.app/) 
-- [front-end application-github-pages](https://vibrant-jepsen-7190df.netlify.app/) 
+- [front-end application-github-pages](https://diana96alazzam-401-advanced-javascript.github.io/resty/) 
 
 
 ### Setup
