@@ -55,19 +55,19 @@ class Form extends React.Component {
 
   render() {
     return (
-        <form id='form' onSubmit={this.handleSubmit}>
-          <label >
-            <span>URL: </span>
-            <input id='textInput' name='url' type='text' onChange={this.handleChangeURL} className={this.state.url ? this.state.url : ''} />
-            <button type="submit">{this.props.prompt}</button>
-          </label>
-          <label className="methods">
-            <span name='method' className={this.state.method === 'GET' ? 'active' : ''} id="GET" onClick={this.handleChangeMethod}>GET</span>
-            <span name='method' className={this.state.method === 'POST' ? 'active' : ''} id="POST" onClick={this.handleChangeMethod}>POST</span>
-            <span name='method' className={this.state.method === 'PUT' ? 'active' : ''} id="PUT" onClick={this.handleChangeMethod}>PUT</span>
-            <span name='method' className={this.state.method === 'DELETE' ? 'active' : ''} id="DELETE" onClick={this.handleChangeMethod}>DELETE</span>
-          </label>
-        </form>
+      <form id='form' onSubmit={this.handleSubmit}>
+        <label >
+          <span>URL: </span>
+          <input id='textInput' name='url' type='text' onChange={this.handleChangeURL} className={this.state.url ? this.state.url : ''} />
+          <button type="submit">{this.props.prompt}</button>
+        </label>
+        <label className="methods">
+          <span name='method' className={this.state.method === 'GET' ? 'active' : ''} id="GET" onClick={this.handleChangeMethod}>GET</span>
+          <span name='method' className={this.state.method === 'POST' ? 'active' : ''} id="POST" onClick={this.handleChangeMethod}>POST</span>
+          <span name='method' className={this.state.method === 'PUT' ? 'active' : ''} id="PUT" onClick={this.handleChangeMethod}>PUT</span>
+          <span name='method' className={this.state.method === 'DELETE' ? 'active' : ''} id="DELETE" onClick={this.handleChangeMethod}>DELETE</span>
+        </label>
+      </form>
     );
   }
 }

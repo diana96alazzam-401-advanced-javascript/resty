@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactJson from "react-json-view";
+import ReactJson from 'react-json-view';
 
 import './results.scss';
 
@@ -9,13 +9,13 @@ function Results(props) {
   return (
     <div id="resultsDiv">
       <section className="results">
-      <span>Headers</span>
-      <ReactJson id="headersID" src={props.headers} theme="shapeshifter:inverted" />
-      <span>Response</span>
-      <ReactJson id="responseID" src={props.response} theme="shapeshifter:inverted" />
+        <span>Headers</span>
+        <ReactJson id="headersID" src={props.headers} theme="shapeshifter:inverted" />
+        <span>Response</span>
+        <ReactJson id="responseID" src={props.response} theme="shapeshifter:inverted" />
       </section>
     </div>
-  )
+  );
 }
 
 export default Results;

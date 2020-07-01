@@ -75,11 +75,11 @@ describe('<Form/>', () => {
 
     // expect(form.find('.url').text()).toStrictEqual('localhost:3000');
     // expect(form.find('.method').text()).toStrictEqual('POST');
-  })
+  });
 
   it('properly display the users input in the output area on form submit', () => {
     // const rendered = renderer.create(<Form />).toJSON();
     // expect(rendered).toMatchSnapshot();
   });
 
-})
+});
