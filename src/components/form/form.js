@@ -6,6 +6,7 @@ class Form extends React.Component {
 
   constructor(props) {
     super(props);
+    this.props = props;
     this.state = {
       url: '',
       method: '',
@@ -13,33 +14,36 @@ class Form extends React.Component {
     };
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    if ( this.state.url && this.state.method ) {
+      if (this.state.url && this.state.method) {
+        let request = {
+          url: this.state.url,
+          method: this.state.method,
+        };
+        let url = '';
+        let method = '';
 
-      // Make an object that would be suitable for superagent
-      let request = {
-        url: this.state.url,
-        method: this.state.method,
-      };
+        this.setState({ request, url, method });
 
-      // Clear old settings
-      let url = '';
-      let method = '';
+        const raw = await fetch(request.url);
+        const fetchedResults = await raw.json();
+        this.props.handler(raw,fetchedResults);
+      }
 
-      this.setState({request, url, method});
-      e.target.reset();
-    }
-
-    else {
-      alert('missing information');
+      else {
+        alert('missing information');
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 
   handleChangeURL = e => {
     const url = e.target.value;
-    this.setState({url});
+    this.setState({ url });
   };
 
   handleChangeMethod = e => {
@@ -49,12 +53,11 @@ class Form extends React.Component {
 
   render() {
     return (
-      <main>
-        <form id= 'form' onSubmit={this.handleSubmit}>
+        <form id='form' onSubmit={this.handleSubmit}>
           <label >
             <span>URL: </span>
-            <input id = 'textInput' name='url' type='text' onChange={this.handleChangeURL} className={this.state.url ? this.state.url : ''} />
-            <button type="submit">GO!</button>
+            <input id='textInput' name='url' type='text' onChange={this.handleChangeURL} className={this.state.url ? this.state.url : ''} />
+            <button type="submit">{this.props.prompt}</button>
           </label>
           <label className="methods">
             <span name='method' className={this.state.method === 'GET' ? 'active' : ''} id="GET" onClick={this.handleChangeMethod}>GET</span>
@@ -63,11 +66,6 @@ class Form extends React.Component {
             <span name='method' className={this.state.method === 'DELETE' ? 'active' : ''} id="DELETE" onClick={this.handleChangeMethod}>DELETE</span>
           </label>
         </form>
-        <section className="results">
-          <span className="method">{this.state.request.method}</span>
-          <span className="url">{this.state.request.url}</span>
-        </section>
-      </main>
     );
   }
 }
@@ -88,7 +86,7 @@ class Form extends React.Component {
 //             <label htmlFor="POST">POST <input type="radio" name="method" id="POST" value="POST"/></label><span/>
 //             <label htmlFor="PUT">PUT <input type="radio" name="method" id="PUT" value="PUT"/></label><span/>
 //             <label htmlFor="PUT">DELETE <input type="radio" name="method" id="DELETE" value="DELETE"/></label><br/><br/>
-  
+
 //             <input type="submit" value="GO!" />
 //         </form>
 //         <p>{this.state.method} - {this.state.url}</p>
@@ -105,7 +103,7 @@ class Form extends React.Component {
 //     e.target.url.value = '';
 //     // e.target.reset();
 //   }
-  
+
 // }
 
 export default Form;
