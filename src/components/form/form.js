@@ -29,8 +29,10 @@ class Form extends React.Component {
         this.setState({ request, url, method });
 
         const raw = await fetch(request.url);
+        let headers = [];
+        raw.headers.forEach(item=>headers.push(item));
         const fetchedResults = await raw.json();
-        this.props.handler(raw,fetchedResults);
+        this.props.handler(headers,fetchedResults);
       }
 
       else {
