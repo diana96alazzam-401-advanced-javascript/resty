@@ -10,6 +10,7 @@ class Form extends React.Component {
     this.state = {
       url: '',
       method: '',
+      body: {},
       request: {},
     };
   }
@@ -17,22 +18,55 @@ class Form extends React.Component {
   handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      e.persist();
+      
 
       if (this.state.url && this.state.method) {
         let request = {
           url: this.state.url,
           method: this.state.method,
+          body: this.state.body,
         };
         let url = '';
         let method = '';
+        let body = '';
 
-        this.setState({ request, url, method });
+        this.setState({ request, url, method, body });
 
-        const raw = await fetch(request.url);
-        let headers = [];
-        raw.headers.forEach(item=>headers.push(item));
-        const fetchedResults = await raw.json();
-        this.props.handler(headers,fetchedResults);
+        if ((this.state.method === 'GET')||(this.state.method === 'DELETE')) {
+          const raw = await fetch(request.url);
+          let headers = [];
+          raw.headers.forEach(item => headers.push(item));
+          const fetchedResults = await raw.json();
+          this.props.handler(headers, fetchedResults);
+          let id = new Date().getTime();
+          let localStorageObj = (localStorage.getItem('history'))?JSON.parse(localStorage.getItem('history')):{};
+
+          localStorageObj[id] = fetchedResults;
+          localStorage.setItem('history', JSON.stringify(localStorageObj));
+
+        } else {
+          let headers = [];
+          const raw = await fetch((this.state.url),
+            {
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              method: this.state.method,
+              body: (this.state.body),            
+            });
+
+          raw.headers.forEach(item => headers.push(item));
+          const fetchedResults = await raw.json();
+          this.props.handler(headers, fetchedResults);
+          let id = new Date().getTime();
+          let localStorageObj = (localStorage.getItem('history'))?JSON.parse(localStorage.getItem('history')):{};
+          localStorageObj[id] = fetchedResults;
+          localStorage.setItem('history', JSON.stringify(localStorageObj));
+        }
+        e.target.url.value = '';
+        e.target.body.value = '';
+        e.target.method.value = '';
       }
 
       else {
@@ -47,11 +81,18 @@ class Form extends React.Component {
     const url = e.target.value;
     this.setState({ url });
   };
+  handleChangeBody = e => {
+    const body = e.target.value;
+    if (body) {
+      this.setState({ body });
+    }
+  };
 
   handleChangeMethod = e => {
     const method = e.target.id;
     this.setState({ method });
   };
+  
 
   render() {
     return (
@@ -59,6 +100,8 @@ class Form extends React.Component {
         <label >
           <span>URL: </span>
           <input id='textInput' name='url' type='text' onChange={this.handleChangeURL} className={this.state.url ? this.state.url : ''} />
+          <span>Body: </span>
+          <input id='bodyTextInput' name='body' type='text' onChange={this.handleChangeBody} className={this.state.body ? this.state.body : ''} />
           <button type="submit">{this.props.prompt}</button>
         </label>
         <label className="methods">

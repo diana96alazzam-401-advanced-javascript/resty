@@ -1,10 +1,12 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.scss';
 
 
 import Header from './components/header/header';
 import Form from './components/form/form';
 import Results from './components/results/results';
+import History from './components/history/history';
 import Footer from './components/footer/footer';
 
 
@@ -15,18 +17,24 @@ class App extends React.Component {
     this.state = { count: 0, results: [] };
   }
 
-  handlerForm = (headers, results) => {
+  formHandler = (headers, results) => {
     const result = { headers, response: results };
     this.setState({ count: results.count, results: result });
-  };
-
+  }
   render() {
     return (
       <>
         <Header />
         <main>
-          <Form prompt='GO!' handler={this.handlerForm} />
-          <Results response={this.state.results} headers={this.state.results.headers} />
+          <Route exact path="/">
+            <Form prompt='GO!' handler={this.formHandler} />
+            <Results response={this.state.results} headers={this.state.results.headers} />
+          </Route>
+          
+          <Route exact path="/history">
+            <History response={this.state.results} headers={this.state.results.headers} />
+          </Route>
+
         </main>
         <Footer />
       </>
