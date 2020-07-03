@@ -23,6 +23,10 @@ class Form extends React.Component {
 
 
       if (this.state.url && this.state.method) {
+
+        // start loading
+        this.props.progress(true);
+
         let request = {
           url: this.state.url,
           method: this.state.method,
@@ -53,12 +57,15 @@ class Form extends React.Component {
 
           const raw = await fetch(request.url);
 
+          // stop loading
+          this.props.progress(false);
+
           // access headers
           raw.headers.forEach(item => headers.push(item));
           // read the response stream in the fetched body
           const fetchedResults = await raw.json();
           // pass the headers and the reselts in the props function to set the state of the app
-          this.props.handler(headers, fetchedResults);
+          this.props.handler(headers, fetchedResults, this.state.loading);
 
           // create an id for the request
           let id = new Date().getTime();
@@ -81,6 +88,9 @@ class Form extends React.Component {
               method: this.state.method,
               body: (this.state.body),
             });
+
+          // stop loading
+          this.props.progress(false);
 
           // access headers
           raw.headers.forEach(item => headers.push(item));
@@ -130,8 +140,17 @@ class Form extends React.Component {
     this.setState({ method });
   };
 
+  historyRecall = () => {
+    // get the form elements and fill them with the chosen history
+    document.getElementById('textInput').setAttribute('value', this.props.historyRecall.url);
+    document.getElementById('bodyTextInput').setAttribute('value', this.props.historyRecall.body);
+  }
 
   render() {
+    // check if there is history that has been clicked then call the function to fill the form
+    if ((this.props.historyRecall.url) && (this.props.historyRecall.method)) {
+      this.historyRecall();
+    }
     return (
       <form id='form' onSubmit={this.handleSubmit}>
         <label >
