@@ -8,22 +8,22 @@ import HistoryItem from './history-item.js';
 class History extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { results: [] };
+    this.state = (props.history)?(props.history):{};
   }
 
   componentDidMount() {
-    let history = localStorage.getItem('rememberMe') ==='true';
-    console.log('historyyyyyy', history);
-    this.setState({results: history});
+    let history = JSON.parse(localStorage.getItem('history'));
+    this.setState({history});
 
   }
   render() {
+    let obj = (this.state.history)?(this.state.history):{};
+    let historyItems = Object.keys(obj).map(key=> obj[key]);
     return (
       <ul>
-        {/* {this.state.results.map((data) => {
-          console.log(data);
-          return <HistoryItem />;
-        })} */}
+        { Object.keys(historyItems).map(objKey=>{
+          return <HistoryItem key={objKey} method={historyItems[objKey].method} url={historyItems[objKey].url}/>;
+        })}
       </ul>
     );
   }

@@ -18,8 +18,9 @@ class Form extends React.Component {
   handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      // persist the event to reset the form later
       e.persist();
-      
+
 
       if (this.state.url && this.state.method) {
         let request = {
@@ -27,46 +28,82 @@ class Form extends React.Component {
           method: this.state.method,
           body: this.state.body,
         };
+
+        // clear the form state url, method and body
         let url = '';
         let method = '';
         let body = '';
-
         this.setState({ request, url, method, body });
 
-        if ((this.state.method === 'GET')||(this.state.method === 'DELETE')) {
-          const raw = await fetch(request.url);
-          let headers = [];
-          raw.headers.forEach(item => headers.push(item));
-          const fetchedResults = await raw.json();
-          this.props.handler(headers, fetchedResults);
-          let id = new Date().getTime();
-          let localStorageObj = (localStorage.getItem('history'))?JSON.parse(localStorage.getItem('history')):{};
+        // array to push the headers in
+        let headers = [];
 
-          localStorageObj[id] = fetchedResults;
+        // create an object to be saved in the local storage 
+        let newObj = {
+          body: this.state.body,
+          header: headers,
+          host: (this.state.url).split('/')[2],
+          method: this.state.method,
+          path: (this.state.url).split('/').slice(3).join('/'),
+          url: this.state.url,
+        };
+
+        // get and delete don't have body
+        if ((this.state.method === 'GET') || (this.state.method === 'DELETE')) {
+
+          const raw = await fetch(request.url);
+
+          // access headers
+          raw.headers.forEach(item => headers.push(item));
+          // read the response stream in the fetched body
+          const fetchedResults = await raw.json();
+          // pass the headers and the reselts in the props function to set the state of the app
+          this.props.handler(headers, fetchedResults);
+
+          // create an id for the request
+          let id = new Date().getTime();
+          // get the history in the local storage 
+          let localStorageObj = (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : {};
+          // append the fetched results to a properety in the local storage object with the key of the new item id
+          localStorageObj[id] = newObj;
+          // save the updated object in the local storage again
           localStorage.setItem('history', JSON.stringify(localStorageObj));
+          // render the history 
+          this.props.renderHistory(localStorageObj);
 
         } else {
-          let headers = [];
+
           const raw = await fetch((this.state.url),
             {
               headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
               },
               method: this.state.method,
-              body: (this.state.body),            
+              body: (this.state.body),
             });
 
+          // access headers
           raw.headers.forEach(item => headers.push(item));
+          // read the response stream in the fetched body
           const fetchedResults = await raw.json();
+          // pass the headers and the reselts in the props function to set the state of the app
           this.props.handler(headers, fetchedResults);
+
+          // create an id for the request
           let id = new Date().getTime();
-          let localStorageObj = (localStorage.getItem('history'))?JSON.parse(localStorage.getItem('history')):{};
-          localStorageObj[id] = fetchedResults;
+          // get the history in the local storage 
+          let localStorageObj = (localStorage.getItem('history')) ? JSON.parse(localStorage.getItem('history')) : {};
+          // append the fetched results to a properety in the local storage object with the key of the new item id
+          localStorageObj[id] = newObj;
+          // save the updated object in the local storage again
           localStorage.setItem('history', JSON.stringify(localStorageObj));
+          // render the history 
+          this.props.renderHistory(localStorageObj);
         }
+        // reset the form 
         e.target.url.value = '';
         e.target.body.value = '';
-        e.target.method.value = '';
+        e.target.method = '';
       }
 
       else {
@@ -92,7 +129,7 @@ class Form extends React.Component {
     const method = e.target.id;
     this.setState({ method });
   };
-  
+
 
   render() {
     return (
@@ -114,41 +151,5 @@ class Form extends React.Component {
     );
   }
 }
-
-// class Form extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {method: 'Method', url: 'URL'};
-//   }
-
-//   render(){
-//     return (
-//       <main className="formArea">
-//         <form onSubmit={this.submitHandler}>
-
-//             <label htmlFor="url">URL <input type="text" name="url" id="url"/></label><br/>
-//             <label htmlFor="GET">GET <input type="radio" name="method" id="GET" value="GET" /></label> <span/>
-//             <label htmlFor="POST">POST <input type="radio" name="method" id="POST" value="POST"/></label><span/>
-//             <label htmlFor="PUT">PUT <input type="radio" name="method" id="PUT" value="PUT"/></label><span/>
-//             <label htmlFor="PUT">DELETE <input type="radio" name="method" id="DELETE" value="DELETE"/></label><br/><br/>
-
-//             <input type="submit" value="GO!" />
-//         </form>
-//         <p>{this.state.method} - {this.state.url}</p>
-//       </main>
-//           )
-//   }
-
-//   submitHandler = (e)=> {
-//     e.preventDefault();
-//     const method = e.target.method.value;
-//     const url = e.target.url.value;
-//     this.setState({method, url});
-//     e.target.method.checked = false;
-//     e.target.url.value = '';
-//     // e.target.reset();
-//   }
-
-// }
 
 export default Form;
