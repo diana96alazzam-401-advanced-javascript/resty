@@ -11,8 +11,13 @@ class History extends React.Component {
     super(props);
     this.state = {history:(props.history)} ? {history:(props.history)} : {};
   }
+  static getDerivedStateFromProps(props, state){
+    if (props.selected !== state.history) {
+      return{history:state.history}; 
+    }
 
-  componentWillMount() {
+  }
+  componentDidMount = () => {
     let history = JSON.parse(localStorage.getItem('history'));
     this.setState({ history });
   }

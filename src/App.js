@@ -36,13 +36,11 @@ class App extends React.Component {
       url: recalled[3],
       body: recalled[5],
     }, function () {
-      console.log('sssssssssss', this.state);
       // get the form elements and fill them with the recalled (clicked) history item
       document.getElementById('textInput').setAttribute('value', recalled[3]);
       document.getElementById('bodyTextInput').setAttribute('value', (recalled[5]) ? (recalled[5]) : '');
     });
     // this.setState({ history:{url: recalled[3], body: recalled[5]} });
-    console.log('heeey', recalled);
 
   };
 
@@ -69,6 +67,8 @@ class App extends React.Component {
               response={this.state.results}
               headers={this.state.results.headers}
               progress={this.state.loading}
+              history={this.state.history}
+              historyRecall={this.historyRecall}
             />
 
             <History
