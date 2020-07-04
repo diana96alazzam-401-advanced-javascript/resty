@@ -14,7 +14,7 @@ import Footer from './components/footer/footer';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading:false, count: 0, results: [] , history:{}, method:'', url:'', body:''};
+    this.state = { loading: false, count: 0, results: {}, history: {}, method: '', url: '', body: '' };
   }
 
   formHandler = (headers, results, loading) => {
@@ -23,15 +23,31 @@ class App extends React.Component {
   }
 
   renderHistory = (history) => {
-    this.setState({history});
+    this.setState({ history }, function () {
+      console.log('ppppppp', this.state);
+    });
   }
 
-  historyRecall = (method, url, body)=> {
-    this.setState({method, url, body});
-  }
-  
+  historyRecall = (e) => {
+    let recalled = e.currentTarget.innerText;
+    recalled = recalled.split('*');
+    this.setState({
+      method: recalled[1],
+      url: recalled[3],
+      body: recalled[5],
+    }, function () {
+      console.log('sssssssssss', this.state);
+      // get the form elements and fill them with the recalled (clicked) history item
+      document.getElementById('textInput').setAttribute('value', recalled[3]);
+      document.getElementById('bodyTextInput').setAttribute('value', (recalled[5]) ? (recalled[5]) : '');
+    });
+    // this.setState({ history:{url: recalled[3], body: recalled[5]} });
+    console.log('heeey', recalled);
+
+  };
+
   loading = (bool) => {
-    this.setState({loading:bool});  
+    this.setState({ loading: bool });
   }
 
   render() {
@@ -40,11 +56,29 @@ class App extends React.Component {
         <Header />
         <main>
           <Route exact path="/">
-            <Form prompt='GO!' handler={this.formHandler} renderHistory={this.renderHistory} historyRecall={{method:this.state.method, url:this.state.url, body:this.state.body}} progress={this.loading}/>
-            <Results response={this.state.results} headers={this.state.results.headers} progress={this.state.loading}/>
-            <History history={this.state.history} historyRecall={this.historyRecall}/>
+
+            <Form prompt='GO!'
+              handler={this.formHandler}
+              url={this.state.url}
+              method={this.state.method}
+              renderHistory={this.renderHistory}
+              progress={this.loading}
+            />
+
+            <Results
+              response={this.state.results}
+              headers={this.state.results.headers}
+              progress={this.state.loading}
+            />
+
+            <History
+              history={this.state.history}
+              historyRecall={this.historyRecall}
+              renderHistory={this.renderHistory}
+            />
+
           </Route>
-          
+
           <Route exact path="/history">
             <HistoryPage historyList={this.state.history} />
           </Route>

@@ -13,18 +13,18 @@
 - [front-end application-github-pages](https://diana96alazzam-401-advanced-javascript.github.io/resty/) 
 
 
+### Notes: 
+ - BUG: The history will show in the first page after refresh.
+ - BUG: You need to do anything(add / or space or anything then delete it) inside the text input to make the form accept the value.
+ 
 ### Setup
 
-<!-- #### `.env` requirement -->
-
-<!-- - `PORT` - 3000 -->
-<!-- - `MONGODB_URI` - URL to the running mongo instance/db -->
+- `npm install`
 
 #### How to initialize/run this application
 
-- `npm start` and it will redirect you to `http://localhost:3000/diana96alazzam-401-advanced-javascript.github.io/resty`
+- `npm start` and it will redirect you to `http://localhost:3000/resty`
 
-#### How to use your library
 
 #### Tests
 

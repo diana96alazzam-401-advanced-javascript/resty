@@ -15,6 +15,7 @@ class HistoryPage extends React.Component {
     let history = JSON.parse(localStorage.getItem('history'));
     this.setState({ history });
   }
+  
   render() {
     let obj = (this.state.history) ? (this.state.history) : {};
     // create an array of the items in the local storage

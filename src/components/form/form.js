@@ -108,6 +108,7 @@ class Form extends React.Component {
           // save the updated object in the local storage again
           localStorage.setItem('history', JSON.stringify(localStorageObj));
           // render the history 
+          console.log(localStorageObj, 'what?');
           this.props.renderHistory(localStorageObj);
         }
         // reset the form 
@@ -135,22 +136,20 @@ class Form extends React.Component {
     }
   };
 
+  // it works this way but you need to click the history item two times
+  // componentWillReceiveProps = () => {
+  //   if ((this.props.historyRecall.url) && (this.props.historyRecall.method)) {
+  //     this.historyRecall();
+  //   }
+  // }
+
   handleChangeMethod = e => {
     const method = e.target.id;
     this.setState({ method });
   };
 
-  historyRecall = () => {
-    // get the form elements and fill them with the chosen history
-    document.getElementById('textInput').setAttribute('value', this.props.historyRecall.url);
-    document.getElementById('bodyTextInput').setAttribute('value', this.props.historyRecall.body);
-  }
-
   render() {
     // check if there is history that has been clicked then call the function to fill the form
-    if ((this.props.historyRecall.url) && (this.props.historyRecall.method)) {
-      this.historyRecall();
-    }
     return (
       <form id='form' onSubmit={this.handleSubmit}>
         <label >
