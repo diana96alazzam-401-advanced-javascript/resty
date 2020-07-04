@@ -5,7 +5,7 @@ const Footer = ()=> {
     <footer>
     &copy; 2020 Diana Alazzam 
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

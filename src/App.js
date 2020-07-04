@@ -12,11 +12,11 @@ import Footer from './components/footer/footer';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0, results: [] }
+    this.state = { count: 0, results: [] };
   }
 
   handlerForm = (headers, results) => {
-    const result = { headers, response: results }
+    const result = { headers, response: results };
     this.setState({ count: results.count, results: result });
   };
 
@@ -30,7 +30,7 @@ class App extends React.Component {
         </main>
         <Footer />
       </>
-    )
+    );
   }
 }
 
