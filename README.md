@@ -1,5 +1,3 @@
-# LAB - Class 26
-
 ## Project: RESTy
 
 ### Author: Student/Group Name
