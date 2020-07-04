@@ -7,7 +7,7 @@
 - [submission PR](https://github.com/diana96alazzam-401-advanced-javascript/resty/pull/12)
 <!-- - [ci/cd](http://xyz.com) (GitHub Actions) 
 - [back-end server url](http://xyz.com) (when applicable)  -->
-- [front-end application-github-pages](https://diana96alazzam-401-advanced-javascript.github.io/resty/) 
+- [front-end application-github-pages](https://diana96alazzam-401-advanced-javascript.github.io/) 
 - [front-end application-netlify](https://quirky-hoover-84b857.netlify.app/) 
 
 
