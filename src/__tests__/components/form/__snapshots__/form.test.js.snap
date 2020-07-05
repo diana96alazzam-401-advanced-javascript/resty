@@ -3,6 +3,7 @@
 exports[`<Form/> properly display the users input in the output area on form submit 1`] = `
 <main>
   <form
+    id="form"
     onSubmit={[Function]}
   >
     <label>
@@ -10,6 +11,8 @@ exports[`<Form/> properly display the users input in the output area on form sub
         URL: 
       </span>
       <input
+        className=""
+        id="textInput"
         name="url"
         onChange={[Function]}
         type="text"
@@ -25,28 +28,32 @@ exports[`<Form/> properly display the users input in the output area on form sub
     >
       <span
         className=""
-        id="get"
+        id="GET"
+        name="method"
         onClick={[Function]}
       >
         GET
       </span>
       <span
         className=""
-        id="post"
+        id="POST"
+        name="method"
         onClick={[Function]}
       >
         POST
       </span>
       <span
         className=""
-        id="put"
+        id="PUT"
+        name="method"
         onClick={[Function]}
       >
         PUT
       </span>
       <span
         className=""
-        id="delete"
+        id="DELETE"
+        name="method"
         onClick={[Function]}
       >
         DELETE
