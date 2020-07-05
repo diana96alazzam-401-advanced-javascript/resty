@@ -39,7 +39,18 @@ class App extends React.Component {
       // get the form elements and fill them with the recalled (clicked) history item
       document.getElementById('textInput').setAttribute('value', recalled[3]);
       document.getElementById('bodyTextInput').setAttribute('value', (recalled[5]) ? (recalled[5]) : '');
+      
+      // get the input after setting the attribute
+      let textInput =  document.getElementById('textInput');
+      let bodyTextInput =  document.getElementById('bodyTextInput');
+    
+      // trigger the onChange functions on the input to set the state in the form
+      textInput.dispatchEvent(new Event('input', { bubbles: true }));
+      bodyTextInput.dispatchEvent(new Event('input', { bubbles: true }));
+
     });
+
+
     // this.setState({ history:{url: recalled[3], body: recalled[5]} });
 
   };

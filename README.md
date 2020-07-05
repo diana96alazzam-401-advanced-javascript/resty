@@ -11,7 +11,6 @@
 
 
 ### Notes: 
- - BUG: You need to do anything(add / or space or anything then delete it) inside the text input to make the form accept the value.
  - BUG: The history will show in the first page but when you click it it will change the value of the test input but doesn't show it in the form.
 
 ### Setup

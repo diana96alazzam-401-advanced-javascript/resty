@@ -15,7 +15,6 @@ class History extends React.Component {
     if (props.selected !== state.history) {
       return{history:state.history}; 
     }
-
   }
   componentDidMount = () => {
     let history = JSON.parse(localStorage.getItem('history'));
