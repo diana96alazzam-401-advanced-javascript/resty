@@ -1,4 +1,4 @@
-# LAB - Class 26
+# LAB - Class 27
 
 ## Project: RESTy
 
@@ -8,8 +8,9 @@
 
 - [submission PR](https://github.com/diana96alazzam-401-advanced-javascript/resty/pull/1/)
 <!-- - [ci/cd](http://xyz.com) (GitHub Actions) 
-- [back-end server url](http://xyz.com) (when applicable)
-- [front-end application](http://xyz.com) (when applicable) -->
+- [back-end server url](http://xyz.com) (when applicable) -->
+[front-end application](https://sharp-poincare-46f5f6.netlify.app/) (when applicable)
+
 
 ### Setup
 
@@ -26,12 +27,9 @@ i.e.
 
 #### How to use your library
 <!-- 
-#### Tests
+<!-- #### Tests -->
 
-- How do you run tests?
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc -->
+- npm run test
 
 #### UML
 
-Link to an image of the UML for your application and response to events
