@@ -9,27 +9,20 @@
 - [submission PR](https://github.com/diana96alazzam-401-advanced-javascript/resty/pull/1/)
 <!-- - [ci/cd](http://xyz.com) (GitHub Actions) 
 - [back-end server url](http://xyz.com) (when applicable) -->
-[front-end application](https://sharp-poincare-46f5f6.netlify.app/) (when applicable)
+[front-end application](https://sharp-poincare-46f5f6.netlify.app/) (netlify)
+[front-end application](https://sharp-poincare-46f5f6.netlify.app/) (github)
 
 
-### Setup
-
-#### `.env` requirement
-
-i.e.
-
-<!-- - `PORT` - 3000 -->
-<!-- - `MONGODB_URI` - URL to the running mongo instance/db -->
 
 #### How to initialize/run this application
 
-- e.g. `npm start`
+- `npm start`
 
-#### How to use your library
-<!-- 
-<!-- #### Tests -->
+#### Tests
 
-- npm run test
+- npm test
 
 #### UML
+
+![lab27-uml](./assets/lab27-uml.png)
 
