@@ -24,5 +24,5 @@
 
 #### UML
 
-![lab27-uml](./assets/lab28-uml.png)
+![lab28-uml](./assets/lab28-uml.png)
 
