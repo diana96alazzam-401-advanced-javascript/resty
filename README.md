@@ -26,3 +26,9 @@
 
 - npm test
 
+
+#### UML
+
+![lab29-uml](./assets/lab29-uml.png)
+
+
