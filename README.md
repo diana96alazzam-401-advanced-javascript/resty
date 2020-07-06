@@ -1,4 +1,4 @@
-# LAB - Class 26
+# LAB - Class 28
 
 ## Project: RESTy
 
@@ -13,20 +13,16 @@
 - [front-end application-github-pages](https://diana96alazzam-401-advanced-javascript.github.io/resty/) 
 
 
-### Setup
-
-<!-- #### `.env` requirement -->
-
-<!-- - `PORT` - 3000 -->
-<!-- - `MONGODB_URI` - URL to the running mongo instance/db -->
-
 #### How to initialize/run this application
 
 - `npm start` and it will redirect you to `http://localhost:3000/diana96alazzam-401-advanced-javascript.github.io/resty`
 
-#### How to use your library
 
-#### Tests
+#### How to initialize/run this application
 
-- npm test
+- `npm start`
+
+#### UML
+
+![lab27-uml](./assets/lab28-uml.png)
 
