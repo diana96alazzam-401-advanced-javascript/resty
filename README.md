@@ -12,8 +12,8 @@
 
 <!-- - [ci/cd](http://xyz.com) (GitHub Actions) 
 - [back-end server url](http://xyz.com) (when applicable) -->
-[front-end application](https://sharp-poincare-46f5f6.netlify.app/) (netlify)
-[front-end application](https://sharp-poincare-46f5f6.netlify.app/) (github)
+- [front-end application](https://sharp-poincare-46f5f6.netlify.app/) (netlify)
+- **Doesn't work for now but I tested before** [front-end application](https://diana96alazzam-401-advanced-javascript.github.io/resty/) (github)
 
 
 
