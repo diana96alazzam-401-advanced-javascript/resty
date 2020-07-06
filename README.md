@@ -1,32 +1,34 @@
-# LAB - Class 26
-
 ## Project: RESTy
 
 ### Author: Student/Group Name
 
 ### Links and Resources
 
-- [submission PR](https://github.com/diana96alazzam-401-advanced-javascript/resty/pull/10)
+- [submission PR](https://github.com/diana96alazzam-401-advanced-javascript/resty/pull/12)
 <!-- - [ci/cd](http://xyz.com) (GitHub Actions) 
 - [back-end server url](http://xyz.com) (when applicable)  -->
-- [front-end application-netlify](https://quirky-hoover-84b857.netlify.app/) 
-- [front-end application-github-pages](https://diana96alazzam-401-advanced-javascript.github.io/resty/) 
+- [front-end application-netlify](https://priceless-swirles-872b5b.netlify.app/) 
 
+
+### Notes: 
+ - BUG: The history will show in the first page but when you click it it will change the value of the test input but doesn't show it in the form.
 
 ### Setup
 
-<!-- #### `.env` requirement -->
-
-<!-- - `PORT` - 3000 -->
-<!-- - `MONGODB_URI` - URL to the running mongo instance/db -->
+- `npm install`
 
 #### How to initialize/run this application
 
-- `npm start` and it will redirect you to `http://localhost:3000/diana96alazzam-401-advanced-javascript.github.io/resty`
+- `npm start` and it will redirect you to `http://localhost:3000/resty`
 
-#### How to use your library
 
 #### Tests
 
 - npm test
+
+
+#### UML
+
+![lab29-uml](./assets/lab29-uml.png)
+
 
