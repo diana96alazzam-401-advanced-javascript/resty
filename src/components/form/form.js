@@ -29,13 +29,9 @@ class Form extends React.Component {
         this.setState({ request, url, method });
 
         const raw = await fetch(request.url);
-<<<<<<< HEAD
-        const headers = [];
-        raw.headers.forEach(item=>headers.push(item))
-=======
+
         let headers = [];
         raw.headers.forEach(item=>headers.push(item));
->>>>>>> 79dffb1c0a32e9da096b4fbea20eec1f139dfedd
         const fetchedResults = await raw.json();
         this.props.handler(headers,fetchedResults);
       }
